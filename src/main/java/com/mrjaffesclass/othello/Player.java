@@ -36,6 +36,8 @@ public class Player
         return this.getClass().getSimpleName();
     }
 
+    
+    
     /**
      * The player must override getNextMove
      * @param board Game board
@@ -43,14 +45,6 @@ public class Player
      *          if no move is available
      */
     Position getNextMove(Board board) {
-        ArrayList<Position> possiblePositions = new ArrayList();
-        for(int row = 0; row < Constants.SIZE; row++) {
-            for(int col = 0; col < Constants.SIZE; col++) {
-                
-            }
-        }
-      
-      
         return null;
     }
 
