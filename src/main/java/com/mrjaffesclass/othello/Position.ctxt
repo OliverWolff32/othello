@@ -1,6 +1,6 @@
 #BlueJ class context
 comment0.target=Position
-comment0.text=\n\ Represents\ a\ coordinate\ pair\ on\ the\ game\ board\n
+comment0.text=\r\n\ Represents\ a\ coordinate\ pair\ on\ the\ game\ board\r\n
 comment1.params=row\ col
 comment1.target=Position(int,\ int)
 comment2.params=

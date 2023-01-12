@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=Othello
-comment0.text=\n\ Othello\ class\ project\ competition\n\ @author\ Roger\ Jaffe\n\ @version\ 1.0\n
+comment0.text=\r\n\ Othello\ class\ project\ competition\r\n\ @author\ Roger\ Jaffe\r\n\ @version\ 1.0\r\n
 comment1.params=args
 comment1.target=void\ main(java.lang.String[])
-comment1.text=\n\ @param\ args\ the\ command\ line\ arguments\n
+comment1.text=\r\n\ @param\ args\ the\ command\ line\ arguments\r\n
 numComments=2

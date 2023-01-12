@@ -7,6 +7,7 @@
 package src.main.java.com.mrjaffesclass.othello;
 
 import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Test player
@@ -42,17 +43,47 @@ public class TestPlayer extends Player {
     public Position getNextMove(Board board) {
         int blackSquares = board.countSquares(Constants.BLACK);
         int whiteSquares = board.countSquares(Constants.WHITE);
-        
-        Board newBoard = createBoard(board);
-        
-        for(int row = 0; row < Constants.SIZE; row++) {
-            for(int col = 0; col < Constants.SIZE; col++) {
-                
+        int squaresChanged = 0; 
+
+        Map<Position, Integer> moveValue = new HashMap();
+        Board newBoard = new Board();
+
+        if(!board.noMovesAvailable(this)) {
+            
+            // checks all positions for their number of pieces added to the board.
+            // Then applies that value to a map(moveValue) with the key of the 
+            // position andthe value of the squares changed. 
+
+            for(int row = 0; row < Constants.SIZE; row++) {
+                for(int col = 0; col < Constants.SIZE; col++) {
+                    newBoard = createBoard(board); 
+                    if (isLegalMove(newBoard, new Position(row, col))) {
+                        newBoard.makeMove(this, new Position(row, col));
+                        squaresChanged = newBoard.countSquares(this.getColor()) - board.countSquares(this.getColor());
+                        moveValue.put(new Position(row, col), squaresChanged);
+                    }  
+                }
             }
+
+            // checks all the map values against each other. 
+            // returns the greatest position
+            // uses a nested for loop b/c map keys are Positions, which need x and y
+
+            int maxValue = moveValue.get(new Position(0, 0)); 
+            Position maxValuePos = new Position(0, 0);
+            for(int row = 0; row < Constants.SIZE; row++) {
+                for(int col = 0; col < Constants.SIZE; col++) {
+                    if(moveValue.get(new Position(row, col)) > maxValue) {
+                        maxValue = moveValue.get(new Position(row, col)); 
+                        maxValuePos = new Position(row, col);
+                    }
+                }
+            }
+            return maxValuePos;
         }
-        
-        
+
         return null; 
+        
         /**  ArrayList<Position> list = this.getLegalMoves(board);
         if (list.size() > 0) {
         int idx = (int) (Math.random() * list.size());
